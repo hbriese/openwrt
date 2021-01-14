@@ -2827,7 +2827,8 @@ static void build_image(const char *output,
 	parts[4] = read_file("file-system", rootfs_image, add_jffs2_eof, file_system_partition);
 
 	/* Some devices need the extra-para partition to accept the firmware */
-	if (strcasecmp(info->id, "ARCHER-A7-V5") == 0 ||
+	if (strcasecmp(info->id, "ARCHER-A6-V3") == 0 ||
+	    strcasecmp(info->id, "ARCHER-A7-V5") == 0 ||
 	    strcasecmp(info->id, "ARCHER-C2-V3") == 0 ||
 	    strcasecmp(info->id, "ARCHER-C7-V4") == 0 ||
 	    strcasecmp(info->id, "ARCHER-C7-V5") == 0 ||
