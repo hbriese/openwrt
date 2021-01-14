@@ -33,6 +33,9 @@ ramips_setup_interfaces()
 	ubnt,unifi-nanohd)
 		ucidef_set_interface_lan "lan"
 		;;
+	tplink,archera6-v3)
+		ucidef_set_interfaces_lan_wan "eth1 eth2 eth3 eth4" "wan"
+		;;
 	gehua,ghl-r-001|\
 	hiwifi,hc5962|\
 	xiaomi,mi-router-3-pro|\

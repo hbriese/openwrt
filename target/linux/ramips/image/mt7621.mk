@@ -1102,6 +1102,20 @@ define Device/tplink_re650-v1
 endef
 TARGET_DEVICES += tplink_re650-v1
 
+define Device/tplink_archera6-v3
+  $(Device/dsa-migration)
+  $(Device/tplink-safeloader)
+  DEVICE_MODEL := ArcherA6
+  DEVICE_VARIANT := v3
+  DEVICE_PACKAGES := kmod-mt7603 kmod-mt7615e \
+	kmod-mt7663-firmware-ap kmod-mt7663-firmware-sta
+  TPLINK_BOARD_ID := ArcherA6-V3
+  KERNEL := $(KERNEL_DTB) | uImage lzma  
+  IMAGE_SIZE := 6016k
+  SUPPORTED_DEVICES += archera6-v3
+endef
+TARGET_DEVICES += tplink_archera6-v3
+
 define Device/ubnt_edgerouter_common
   $(Device/dsa-migration)
   $(Device/uimage-lzma-loader)

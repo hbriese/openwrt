@@ -1058,7 +1058,40 @@ static struct device_info boards[] = {
 		.first_sysupgrade_partition = "os-image",
 		.last_sysupgrade_partition = "file-system",
 	},
+	/** Firmware layout for the Archer A6 v3  */
+	{
+		.id     = "ARCHERA6-V3",
+		.vendor = "",
+		.support_list =
+			"SupportList:\n"
+			"{product_name:Archer A6,product_ver:3.0.0,special_id:55530000}\n"
+			"{product_name:Archer A6,product_ver:3.0.0,special_id:54570000}\n"
+			"{product_name:Archer C6,product_ver:3.0.0,special_id:55530000}\n",
+		.part_trail = 0x00,
+		.soft_ver = "soft_ver:1.9.1\n",
 
+		.partitions = {
+			{"factory-boot", 0x00000, 0x20000},
+			{"default-mac", 0x20000, 0x00200},
+			{"pin", 0x20200, 0x00100},
+			{"product-info", 0x20300, 0x00200},
+			{"device-id", 0x20500, 0x0fb00},
+			{"fs-uboot", 0x30000, 0x20000},
+			{"firmware", 0x50000, 0xf89400},
+			{"soft-version", 0xfd9400, 0x00100},
+			{"extra-para", 0xfd9500, 0x00100},
+			{"support-list", 0xfd9600, 0x00200},
+			{"profile", 0xfd9800, 0x03000},
+			{"default-config", 0xfdc800, 0x03000},
+			{"partition-table", 0xfdf800, 0x00800},
+			{"user-config", 0xfe0000, 0x0c000},
+			{"certificate", 0xfec000, 0x04000},
+			{"radio", 0xff0000, 0x10000},
+			{NULL, 0, 0}
+		},
+		.first_sysupgrade_partition = "os-image",
+		.last_sysupgrade_partition = "file-system",
+	},
 	/** Firmware layout for the C60v1 */
 	{
 		.id     = "ARCHER-C60-V1",
