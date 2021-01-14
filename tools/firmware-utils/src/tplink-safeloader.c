@@ -1060,13 +1060,13 @@ static struct device_info boards[] = {
 	},
 	/** Firmware layout for the Archer A6 v3  */
 	{
-		.id     = "ARCHERA6-V3",
+		.id     = "ARCHER-A6-V3",
 		.vendor = "",
 		.support_list =
 			"SupportList:\n"
 			"{product_name:Archer A6,product_ver:3.0.0,special_id:55530000}\n"
 			"{product_name:Archer A6,product_ver:3.0.0,special_id:54570000}\n"
-			"{product_name:Archer C6,product_ver:3.0.0,special_id:55530000}\n",
+			"{product_name:Archer A6,product_ver:3.0.0,special_id:55530000}\n",
 		.part_trail = 0x00,
 		.soft_ver = "soft_ver:1.9.1\n",
 

@@ -6,7 +6,7 @@
 #include <dt-bindings/input/input.h>
 
 / {
-	compatible = "tplink,archera6-v3", "mediatek,mt7621-soc";
+	compatible = "tplink,archer-a6-v3", "mediatek,mt7621-soc";
 	model = "TP-Link Archer A6 v3";
 	
 	aliases {
@@ -56,41 +56,36 @@
 		compatible = "gpio-leds";
 
 		led_power: power {
-			label = "blue:power";
-			gpios = <&gpio 22 GPIO_ACTIVE_LOW>;
+			label = "green:power";
+			gpios = <&gpio 68 GPIO_ACTIVE_LOW>;
 		};
 
 		wifi2g {
-			label = "blue:wifi2g";
+			label = "green:wifi2g";
 			gpios = <&gpio 23 GPIO_ACTIVE_LOW>;
 			linux,default-trigger = "phy0tpt";
 		};
 
 		wifi5g {
-			label = "blue:wifi5g";
-			gpios = <&gpio 24 GPIO_ACTIVE_LOW>;
+			label = "green:wifi5g";
+			gpios = <&gpio 80 GPIO_ACTIVE_LOW>;
 			linux,default-trigger = "phy1tpt";
-		};
-
-		wps_red {
-			label = "red:wps";
-			gpios = <&gpio 26 GPIO_ACTIVE_HIGH>;
-		};
-
-		wps_blue {
-			label = "blue:wps";
-			gpios = <&gpio 27 GPIO_ACTIVE_HIGH>;
 		};
 
 		eth_act {
 			label = "green:eth_act";
-			gpios = <&gpio 28 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 79 GPIO_ACTIVE_LOW>;
 		};
 
 		eth_link {
 			label = "green:eth_link";
-			gpios = <&gpio 29 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 45 GPIO_ACTIVE_LOW>;
 		};
+		eth_link_red {
+			label = "red:eth_link";
+			gpios = <&gpio 78 GPIO_ACTIVE_LOW>;
+		};
+
 	};
 };
 
@@ -180,24 +175,22 @@
 		port@0 {
 			status = "okay";
 			label = "wan";
-			mtd-mac-address = <&config 0x8>;
-			mtd-mac-address-increment = <1>;			
 		};
 		port@1 {
 			status = "okay";
-			label = "eth1";
+			label = "lan1";
 		};
 		port@2 {
 			status = "okay";
-			label = "eth2";
+			label = "lan2";
 		};
 		port@3 {
 			status = "okay";
-			label = "eth3";
+			label = "lan3";
 		};
 		port@4 {
 			status = "okay";
-			label = "eth1";
+			label = "lan1";
 		};
 		
 	};
