@@ -1064,28 +1064,33 @@ static struct device_info boards[] = {
 		.vendor = "",
 		.support_list =
 			"SupportList:\n"
-			"{product_name:Archer A6,product_ver:3.0.0,special_id:55530000}\n"
-			"{product_name:Archer A6,product_ver:3.0.0,special_id:54570000}\n"
-			"{product_name:Archer A6,product_ver:3.0.0,special_id:55530000}\n",
+			"{product_name:Archer A6,product_ver:3.0.0,special_id:55530000}\n"			
+			"{product_name:Archer A6,product_ver:3.0.0,special_id:54570000}\n",
 		.part_trail = 0x00,
-		.soft_ver = "soft_ver:1.9.1\n",
+		.soft_ver = "soft_ver:1.0.5\n",
 
 		.partitions = {
-			{"factory-boot", 0x00000, 0x20000},
-			{"default-mac", 0x20000, 0x00200},
-			{"pin", 0x20200, 0x00100},
-			{"product-info", 0x20300, 0x00200},
-			{"device-id", 0x20500, 0x0fb00},
-			{"fs-uboot", 0x30000, 0x20000},
-			{"firmware", 0x50000, 0xf89400},
-			{"soft-version", 0xfd9400, 0x00100},
-			{"extra-para", 0xfd9500, 0x00100},
-			{"support-list", 0xfd9600, 0x00200},
-			{"profile", 0xfd9800, 0x03000},
-			{"default-config", 0xfdc800, 0x03000},
-			{"partition-table", 0xfdf800, 0x00800},
-			{"user-config", 0xfe0000, 0x0c000},
-			{"certificate", 0xfec000, 0x04000},
+			{"fs-uboot", 0x00000, 0x40000},
+			{"os-image", 0x40000, 0x200000},
+			{"file-system", 0x240000, 0xd60000},
+			{"default-mac", 0xfa0000, 0x00200},
+			{"pin", 0xfa0200, 0x00100},
+			{"device-id", 0xfa0300, 0x00100},
+			{"product-info", 0xfa0400, 0x0fc00},
+			{"default-config", 0xfb0000, 0x08000},
+			{"ap-def-config", 0xfb8000, 0x08000},
+			{"user-config", 0xfc0000, 0x0a000},
+			{"ag-config", 0xfca000, 0x04000},
+			{"certificate", 0xfce000, 0x02000},
+			{"ap-config", 0xfd0000, 0x06000},
+			{"router-config", 0xfd6000, 0x06000},
+			{"favicon", 0xfdc000, 0x02000},
+			{"logo", 0xfde000, 0x02000},
+			{"partition-table", 0xfe0000, 0x00800},
+			{"soft-version", 0xfe0800, 0x00100},
+			{"support-list", 0xfe0900, 0x00200},
+			{"profile", 0xfe0b00, 0x03000},
+			{"extra-para", 0xfe3b00, 0x00100},
 			{"radio", 0xff0000, 0x10000},
 			{NULL, 0, 0}
 		},
@@ -2827,8 +2832,7 @@ static void build_image(const char *output,
 	parts[4] = read_file("file-system", rootfs_image, add_jffs2_eof, file_system_partition);
 
 	/* Some devices need the extra-para partition to accept the firmware */
-	if (strcasecmp(info->id, "ARCHER-A6-V3") == 0 ||
-	    strcasecmp(info->id, "ARCHER-A7-V5") == 0 ||
+	if (strcasecmp(info->id, "ARCHER-A7-V5") == 0 ||
 	    strcasecmp(info->id, "ARCHER-C2-V3") == 0 ||
 	    strcasecmp(info->id, "ARCHER-C7-V4") == 0 ||
 	    strcasecmp(info->id, "ARCHER-C7-V5") == 0 ||
