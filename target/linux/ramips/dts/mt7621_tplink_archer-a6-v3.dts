@@ -109,15 +109,28 @@
 			};
 
 			partition@40000 {
-				compatible = "tplink,firmware";
-				label = "firmware";
+				label = "uImage";
 				reg = <0x40000 0x200000>;
 			};
 
 			config: partition@240000 {
-				label = "config";
+				label = "firmware";
 				reg = <0x240000 0xdb0000>;
-				read-only;
+				
+				compatible = "fixed-partitions";
+				#address-cells = <1>;
+				#size-cells = <1>;
+
+				partition@0 {
+					label = "kernel";
+					reg = <0x000000 0x300000>;
+				};
+
+				partition@300000 {
+					label = "rootfs";
+					reg = <0x300000 0xab0000>;
+				};
+				
 			};
 
 			radio: partition@ff0000 {
